@@ -1,2 +1,2 @@
-# packer-templates
-My Packer templates.
+# packer-freebsd
+My Packer template for FreeBSD.
