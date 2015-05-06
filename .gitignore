@@ -1,5 +1,12 @@
 # Cache objects
 packer_cache/
+output-*/
 
 # For built boxes
 *.box
+
+# Install image
+*.iso
+
+# user scripts
+*.bat

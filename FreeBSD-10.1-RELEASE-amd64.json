@@ -1,0 +1,40 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "vm_name": "VM-FreeBSD-10.1-amd64",
+      "guest_os_type": "FreeBSD_64",
+      "iso_url": "./FreeBSD-10.1-RELEASE-amd64-disc1.iso",
+      "iso_checksum": "d0d4553080b88653569e1871d57fc819",
+      "iso_checksum_type": "md5",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "1000s",
+      "disk_size": 20480,
+      "headless": "false",
+      "shutdown_command": "sudo poweroff",
+      "boot_wait": "8s",
+      "http_directory": "http",
+      "guest_additions_mode": "disable",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "2048" ],
+        ["modifyvm", "{{.Name}}", "--cpus", "2" ]
+      ],
+      "boot_command": [
+        "2<enter><wait10><wait10>",
+        "/bin/sh<enter><wait>",
+        "mdmfs -s 100m md1 /tmp<enter><wait>",
+        "dhclient -l /tmp/dhclient.lease.em0 em0<enter><wait5>",
+        "fetch -o /tmp/setup http://{{ .HTTPIP }}:{{ .HTTPPort }}/install.sh<enter><wait><wait>",
+        "tr -d '\\015' </tmp/setup >/tmp/setup.2<enter><wait>",
+        "bsdinstall script /tmp/setup.2 && reboot<enter>"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "output": "freebsd-10.1-amd64.box",
+      "type": "vagrant"
+    }
+  ]
+}
