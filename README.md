@@ -33,3 +33,9 @@ packer build
 ```sh
 $ packer build FreeBSD-10.1-RELEASE-amd64.json
 ```
+
+add vagrant box
+
+```sh
+$ vagrant box add kunst1080/freebsd-10.1-amd64 freebsd-10.1-amd64.box
+```
