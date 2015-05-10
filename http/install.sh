@@ -39,8 +39,8 @@ cat <<EOS | xargs pkg install
 EOS
 
 ### Add user
-echo 'vagrant' | pw useradd -n vagrant -G operator -h 0 -m
-echo 'vagrant' | pw usermod root -h 0
+echo 'vagrant' | pw useradd -n vagrant -h 0 -m -s /bin/tcsh
+echo 'vagrant' | pw usermod root -h 0 -s /bin/tcsh
 
 ### Set authorized_keys
 mkdir -pm 700 /home/vagrant/.ssh
