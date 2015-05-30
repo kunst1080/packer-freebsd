@@ -58,3 +58,6 @@ Defaults:vagrant !requiretty
 vagrant ALL=(ALL) NOPASSWD: ALL
 EOF
 chmod 440 /usr/local/etc/sudoers.d/vagrant
+
+
+reboot
