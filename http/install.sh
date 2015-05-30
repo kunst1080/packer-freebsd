@@ -1,4 +1,5 @@
-PARTITIONS=ada0
+export ZFSBOOT_DISKS=ada0
+export nonInteractive="YES"
 DISTRIBUTIONS="base.txz kernel.txz"
 
 #!/bin/sh
@@ -12,7 +13,9 @@ EOS
 
 ### Edit resolv.conf
 cat <<EOS>> /etc/resolv.conf
+# Google nameservers
 nameserver 8.8.8.8
+nameserver 8.8.4.4
 EOS
 
 ### Edit rc.conf
@@ -55,3 +58,6 @@ Defaults:vagrant !requiretty
 vagrant ALL=(ALL) NOPASSWD: ALL
 EOF
 chmod 440 /usr/local/etc/sudoers.d/vagrant
+
+
+reboot

@@ -27,7 +27,7 @@
         "dhclient -l /tmp/dhclient.lease.em0 em0<enter><wait5>",
         "fetch -o /tmp/setup http://{{ .HTTPIP }}:{{ .HTTPPort }}/install.sh<enter><wait><wait>",
         "tr -d '\\015' </tmp/setup >/tmp/setup.2<enter><wait>",
-        "bsdinstall script /tmp/setup.2 && reboot<enter>"
+        "bsdinstall script /tmp/setup.2<enter>"
       ]
     }
   ],
